@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>李堯 | 资深广告媒体销售总监</title>
+    <style>
+        :root {
+            --bg-color: #1a0b2e;
+            --text-main: #ffffff;
+            --text-sub: rgba(255, 255, 255, 0.85);
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            --highlight-color: #d946ef;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            line-height: 1.8;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .gradient-bg {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+            background: 
+                radial-gradient(circle at 15% 25%, rgba(139, 92, 246, 0.5) 0%, transparent 50%),
+                radial-gradient(circle at 85% 75%, rgba(236, 72, 153, 0.4) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.3) 0%, transparent 60%);
+            filter: blur(80px);
+        }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+        section { margin-bottom: 80px; }
+        
+        h2 { font-size: 1.8rem; font-weight: 600; margin-bottom: 30px; color: #fff; }
+        p { color: var(--text-sub); font-size: 1.15rem; max-width: 800px; }
+
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+        }
+        .glass-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(139, 92, 246, 0.2);
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .hero { 
+            padding-top: 80px; 
+            display: flex; 
+            align-items: center; 
+            gap: 40px; 
+            flex-wrap: wrap;
+        }
+        .avatar {
+            width: 130px; height: 130px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid rgba(255,255,255,0.2);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            transition: transform 0.4s ease;
+        }
+        .avatar:hover { transform: scale(1.05) rotate(3deg); }
+
+        .hero-text h1 { 
+            margin-bottom: 15px; 
+            font-size: 4rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            background: linear-gradient(to right, #ffffff 0%, #a855f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: letter-spacing 0.4s ease;
+            cursor: default;
+        }
+        .hero-text h1:hover { letter-spacing: 8px; }
+
+        .hero-text .tagline { 
+            font-size: 1.5rem;
+            color: rgba(255,255,255,0.9);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .highlight {
+            color: var(--highlight-color);
+            font-weight: 700;
+            text-shadow: 0 0 8px rgba(217, 70, 239, 0);
+            transition: text-shadow 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+            cursor: default;
+        }
+        .highlight:hover {
+            text-shadow: 0 0 15px rgba(217, 70, 239, 0.8);
+            transform: translateY(-2px);
+        }
+
+        .skills-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+            gap: 20px; 
+        }
+        .skill-item h3 { 
+            font-size: 1.3rem; 
+            margin-bottom: 10px; 
+            color: #fff; 
+            font-weight: 600; 
+        }
+        .skill-item p { font-size: 1rem; }
+
+        .masonry { columns: 2; column-gap: 20px; }
+        .masonry .glass-card { break-inside: avoid; margin-bottom: 20px; display: inline-block; width: 100%; }
+        .masonry img { width: 100%; border-radius: 12px; margin-bottom: 15px; background: rgba(255,255,255,0.1); }
+        .masonry h3 { font-size: 1.2rem; margin-bottom: 8px; color: #fff; font-weight: 600; }
+        .masonry p { font-size: 1rem; line-height: 1.6; }
+
+        .contact-box { text-align: center; padding: 50px 30px; }
+        .contact-btn {
+            display: inline-block; margin-top: 20px; padding: 14px 40px;
+            background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 50px; text-decoration: none; color: #fff; font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .contact-btn:hover { background: rgba(255,255,255,0.25); box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3); }
+
+        @media (max-width: 768px) {
+            .hero { flex-direction: column; text-align: center; align-items: center; }
+            .hero-text h1 { font-size: 2.8rem; }
+            .hero-text .tagline { font-size: 1.2rem; }
+            .masonry { columns: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="gradient-bg"></div>
+
+    <div class="container">
+        <section class="hero">
+            <img src="简历照片.png" alt="李堯" class="avatar">
+            <div class="hero-text">
+                <h1>李堯</h1>
+                <p class="tagline">9年广告媒体销售总监 · <span class="highlight">品牌增长操盘手</span></p>
+                <p>擅长在碎片化流量时代，为品牌构建 <span class="highlight">“品效合一”</span> 的媒体矩阵。<br>用 <span class="highlight">数据驱动</span> 谈判，用 <span class="highlight">策略锁定</span> 预算，用结果赢得信任。</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>核心能力</h2>
+            <div class="skills-grid">
+                <div class="glass-card skill-item">
+                    <h3><span class="highlight">📊 全域媒介策略</span></h3>
+                    <p>打通双微一抖、小红书与线下场景，基于用户旅程定制投放节奏。</p>
+                </div>
+                <div class="glass-card skill-item">
+                    <h3><span class="highlight">💰 预算谈判与优化</span></h3>
+                    <p>累计操盘 2.8 亿预算，擅长利用数据漏斗压低 CPM，提升 ROI。</p>
+                </div>
+                <div class="glass-card skill-item">
+                    <h3><span class="highlight">🤝 头部资源对接</span></h3>
+                    <p>深耕 50+ 头部媒体 KA 关系，确保核心资源位与独家权益。</p>
+                </div>
+                <div class="glass-card skill-item">
+                    <h3><span class="highlight">🛡️ 舆情与危机管理</span></h3>
+                    <p>建立标准化 SOP，9 年实战处理 10+ 起媒体突发舆情。</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>操盘案例</h2>
+            <div class="masonry">
+                <div class="glass-card">
+                    <img src="https://picsum.photos/400/300?random=10" alt="案例1">
+                    <h3>某新能源车企 Q3 上市战役</h3>
+                    <p>统筹 3000 万预算，联动 20 位汽车垂类 KOL + 抖音挑战赛，实现全网曝光 1.2 亿，线索成本降低 35%。</p>
+                </div>
+                <div class="glass-card">
+                    <h3>某国货美妆双 11 种草</h3>
+                    <p>小红书“金字塔”投放模型，从素人铺量到头部背书，搜索指数环比增长 400%，ROI 1:4.5。</p>
+                </div>
+                <div class="glass-card">
+                    <img src="https://picsum.photos/400/250?random=11" alt="案例2">
+                    <h3>某 3C 品牌年度框架谈判</h3>
+                    <p>通过跨平台资源置换与长周期锁价，为品牌节省 15% 年度预算，并获赠 3 个 S 级开屏资源。</p>
+                </div>
+                <div class="glass-card">
+                    <img src="https://picsum.photos/400/350?random=12" alt="案例3">
+                    <h3>某快消品舆情危机公关</h3>
+                    <p>48 小时内完成媒体沟通与正面内容铺设，成功将负面声量压制在 5% 以下，品牌好感度回升。</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="glass-card contact-box">
+                <h2 style="margin-bottom:10px;">聊聊你的品牌增长</h2>
+                <p style="margin: 0 auto;">无论是媒体资源对接，还是年度策略探讨，<br>我随时准备好一杯咖啡的时间。</p>
+                <a href="mailto:48970155@qq.com" class="contact-btn">发送邮件 ✉️</a>
+            </div>
+        </section>
+    </div>
+
+</body>
+</html>
